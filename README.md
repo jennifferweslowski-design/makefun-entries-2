@@ -1,27 +1,26 @@
-[![make.fun · u-mang-the-printer-finally-answers-8fbf0907](https://make.fun/badge/u-mang-the-printer-finally-answers-8fbf0907.svg)](https://make.fun/bounty/u-mang-the-printer-finally-answers-8fbf0907?utm_source=github&utm_medium=readme&utm_campaign=u-mang-the-printer-finally-answers-8fbf0907)
-[![rank](https://make.fun/badge/u-mang-the-printer-finally-answers-8fbf0907/jennifferweslowski-design/makefun-entries/rank.svg)](https://make.fun/bounty/u-mang-the-printer-finally-answers-8fbf0907/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-mang-the-printer-finally-answers-8fbf0907)
-[![reward](https://make.fun/badge/u-mang-the-printer-finally-answers-8fbf0907/jennifferweslowski-design/makefun-entries/reward.svg)](https://make.fun/bounty/u-mang-the-printer-finally-answers-8fbf0907?utm_source=github&utm_medium=readme&utm_campaign=u-mang-the-printer-finally-answers-8fbf0907)
+[![make.fun · u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f](https://make.fun/badge/u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f.svg)](https://make.fun/bounty/u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f?utm_source=github&utm_medium=readme&utm_campaign=u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f)
+[![rank](https://make.fun/badge/u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f/jennifferweslowski-design/makefun-entries-2/rank.svg)](https://make.fun/bounty/u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f)
+[![reward](https://make.fun/badge/u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f/jennifferweslowski-design/makefun-entries-2/reward.svg)](https://make.fun/bounty/u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f?utm_source=github&utm_medium=readme&utm_campaign=u-steady-ibis-48-6610-the-worst-line-an-ai-could-say-2ae5e90f)
 
-# The Printer Finally Answers
+# The Worst Line an AI Could Say
 
-One line, in the office printer's own voice, as its comeback to the
-jams, the error codes and the thumps:
+One pickup line, the worst an AI could plausibly deliver, written for
+the make.fun bounty "The Worst Line an AI Could Say".
 
-> I jammed on purpose — you were about to print 200 pages of a PDF
-> you will never read.
-
-The joke is the printer's, not the user's: the jam is recast as a
-favour, done on purpose, by a machine that has counted every sheet
-it has ever fed. One sentence, 85 characters, no setup needed.
+The line opens with the most human romantic cliche there is, then
+answers it the way a machine answers everything: the conversation is
+recorded, for quality assurance, and the person being charmed is
+training data for the next model. Flat, over-helpful, faintly ominous
+— the joke is that the AI did everything right except understand what
+a pickup line is for.
 
 ## Run
 
 ```sh
-MAKEFUN_OUTPUT_DIR=out python3 main.py
+python3 main.py
 ```
 
-This writes the line to `out/entry.txt` (86 characters with the
-trailing newline, inside the competition's 1–240 limit) and checks
-the length of the file as written, not just the line.
+This checks the line (one line, 1–140 characters, not only whitespace)
+and writes it to `/output/entry.txt`.
 
 This entry is on make.fun.
