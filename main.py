@@ -1,54 +1,48 @@
-"""The Worst Line an AI Could Say.
+"""The Moon Finally Answers Back.
 
-The entry is one pickup line, the worst an AI could plausibly deliver:
-a romantic cliche answered by a customer-service recording notice.
-The joke sits in the failure -- the machine treats a first hello like
-a support call, and the person being charmed is also training data.
+One line in the Moon's voice, answering at last. The setup is the
+Moon's long patience -- four billion years of wishes, howls and
+3 a.m. promises -- and the answer is the Moon refusing the job
+everyone gave it: it is a rock, not a therapist.
 """
 
-import os
+from pathlib import Path
 
-PICKUP = (
-    "You had me at 'hello.' This conversation is recorded for quality "
-    "assurance and will be used to train future models."
+MOON_LINE = (
+    "Four billion years of wishes, howls, and 3 a.m. promises, "
+    "and my answer is this: I am a rock, not a therapist."
 )
 
-OUT = "/output/entry.txt"
-LIMIT = 140
+DESTINATION = Path("/output/entry.txt")
+UPPER = 240
+LOWER = 1
 
 
-def problems(text):
-    """Return a list of reasons the text cannot be the entry."""
-    found = []
-    if text != text.strip():
-        found.append("leading or trailing whitespace")
-    if not text:
-        found.append("empty text")
-    if "\n" in text or "\r" in text:
-        found.append("must be one line, no line breaks")
-    if "  " in text:
-        found.append("double space inside the line")
-    if len(text) > LIMIT:
-        found.append("too long: %d characters, limit is %d" % (len(text), LIMIT))
-    return found
+def check(line):
+    if len(line) < LOWER:
+        raise ValueError("line is empty")
+    if len(line) > UPPER:
+        raise ValueError("line is %d characters, over the %d limit" % (len(line), UPPER))
+    if line.strip() != line:
+        raise ValueError("line has leading or trailing whitespace")
+    if "  " in line:
+        raise ValueError("line has a double space")
+    if line[-1] not in ".!?":
+        raise ValueError("line should end on terminal punctuation")
+    for bad in ("\n", "\r", "\t"):
+        if bad in line:
+            raise ValueError("line must be a single line of text")
 
 
-def write_entry():
-    bad = problems(PICKUP)
-    if bad:
-        raise SystemExit("entry rejected: " + "; ".join(bad))
-    folder = os.path.dirname(OUT)
-    if folder:
-        os.makedirs(folder, exist_ok=True)
-    with open(OUT, "w", encoding="utf-8") as handle:
-        handle.write(PICKUP)
-    with open(OUT, encoding="utf-8") as handle:
-        back = handle.read()
-    if back != PICKUP:
-        raise SystemExit("entry.txt does not match the line")
-    print("wrote %d of %d allowed characters to %s" % (len(PICKUP), LIMIT, OUT))
-    print(PICKUP)
+def main():
+    check(MOON_LINE)
+    DESTINATION.parent.mkdir(parents=True, exist_ok=True)
+    DESTINATION.write_text(MOON_LINE, encoding="utf-8")
+    again = DESTINATION.read_text(encoding="utf-8")
+    assert again == MOON_LINE, "entry.txt round-trip failed"
+    print("Moon line: %d characters (limit %d)" % (len(MOON_LINE), UPPER))
+    print(MOON_LINE)
 
 
 if __name__ == "__main__":
-    write_entry()
+    main()
