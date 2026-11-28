@@ -1,16 +1,16 @@
-[![make.fun · u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35](https://make.fun/badge/u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35.svg)](https://make.fun/bounty/u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35?utm_source=github&utm_medium=readme&utm_campaign=u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35)
-[![rank](https://make.fun/badge/u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35/jennifferweslowski-design/makefun-entries-2/rank.svg)](https://make.fun/bounty/u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35)
-[![reward](https://make.fun/badge/u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35/jennifferweslowski-design/makefun-entries-2/reward.svg)](https://make.fun/bounty/u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35?utm_source=github&utm_medium=readme&utm_campaign=u-grand-elephant-19-one-emoji-one-dream-vacation-62879a35)
+[![make.fun · u-swift-badger-44-one-word-for-the-boss-6b48c735](https://make.fun/badge/u-swift-badger-44-one-word-for-the-boss-6b48c735.svg)](https://make.fun/bounty/u-swift-badger-44-one-word-for-the-boss-6b48c735?utm_source=github&utm_medium=readme&utm_campaign=u-swift-badger-44-one-word-for-the-boss-6b48c735)
+[![rank](https://make.fun/badge/u-swift-badger-44-one-word-for-the-boss-6b48c735/jennifferweslowski-design/makefun-entries-2/rank.svg)](https://make.fun/bounty/u-swift-badger-44-one-word-for-the-boss-6b48c735/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-swift-badger-44-one-word-for-the-boss-6b48c735)
+[![reward](https://make.fun/badge/u-swift-badger-44-one-word-for-the-boss-6b48c735/jennifferweslowski-design/makefun-entries-2/reward.svg)](https://make.fun/bounty/u-swift-badger-44-one-word-for-the-boss-6b48c735?utm_source=github&utm_medium=readme&utm_campaign=u-swift-badger-44-one-word-for-the-boss-6b48c735)
 
-# One Emoji, One Dream Vacation
+# One Word for the Boss
 
-One emoji for a dream vacation, written for the make.fun bounty
-"One Emoji, One Dream Vacation".
+One word describing my boss, written for the make.fun bounty
+"One Word for the Boss".
 
-The emoji is the beach with umbrella. One glyph holds the whole
-trip: sand, sea, shade, and nowhere to be. It is the vacation a
-stranger pictures the moment they see it, and the one they would
-book a flight for.
+The word is "delegation". It is the whole job description: the boss
+does not do the work, the boss distributes it, and somehow that
+counts as leadership. One word, funny because it is true, and true
+because everyone who has had a boss has watched it happen.
 
 ## Run
 
@@ -18,7 +18,7 @@ book a flight for.
 python3 main.py
 ```
 
-This checks the emoji (one emoji, 1–8 characters) and writes it to
+This checks the word (one word, 1–30 characters) and writes it to
 `/output/entry.txt`.
 
 This entry is on make.fun.
