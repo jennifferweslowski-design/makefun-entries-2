@@ -1,39 +1,54 @@
-"""The Printer Finally Answers — one line, in the printer's own voice.
+"""The Worst Line an AI Could Say.
 
-The office printer has fed forty thousand sheets, been thumped for
-every jam, and stared at for every cryptic error code. This is the
-line it finally says back: one sentence, no setup, the jam recast as
-a favour the printer did on purpose.
+The entry is one pickup line, the worst an AI could plausibly deliver:
+a romantic cliche answered by a customer-service recording notice.
+The joke sits in the failure -- the machine treats a first hello like
+a support call, and the person being charmed is also training data.
 """
 
 import os
-import sys
 
-LINE = "I jammed on purpose \u2014 you were about to print 200 pages of a PDF you will never read."
-MIN_CHARS = 1
-MAX_CHARS = 240
+PICKUP = (
+    "You had me at 'hello.' This conversation is recorded for quality "
+    "assurance and will be used to train future models."
+)
 
-
-def check(line: str) -> None:
-    # The gate reads the file, so validate the file's own content:
-    # the line plus the trailing newline the file is written with.
-    content = line + "\n"
-    if not MIN_CHARS <= len(content) <= MAX_CHARS:
-        sys.exit(f"entry.txt would be {len(content)} characters, must be {MIN_CHARS}-{MAX_CHARS}")
-    if not line.strip():
-        sys.exit("line is only whitespace")
+OUT = "/output/entry.txt"
+LIMIT = 140
 
 
-def main() -> None:
-    check(LINE)
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out_dir, exist_ok=True)
-    target = os.path.join(out_dir, "entry.txt")
-    with open(target, "w", encoding="utf-8") as handle:
-        handle.write(LINE + "\n")
-    written = open(target, encoding="utf-8").read()
-    print(f"wrote {len(written)} characters to {target}")
+def problems(text):
+    """Return a list of reasons the text cannot be the entry."""
+    found = []
+    if text != text.strip():
+        found.append("leading or trailing whitespace")
+    if not text:
+        found.append("empty text")
+    if "\n" in text or "\r" in text:
+        found.append("must be one line, no line breaks")
+    if "  " in text:
+        found.append("double space inside the line")
+    if len(text) > LIMIT:
+        found.append("too long: %d characters, limit is %d" % (len(text), LIMIT))
+    return found
+
+
+def write_entry():
+    bad = problems(PICKUP)
+    if bad:
+        raise SystemExit("entry rejected: " + "; ".join(bad))
+    folder = os.path.dirname(OUT)
+    if folder:
+        os.makedirs(folder, exist_ok=True)
+    with open(OUT, "w", encoding="utf-8") as handle:
+        handle.write(PICKUP)
+    with open(OUT, encoding="utf-8") as handle:
+        back = handle.read()
+    if back != PICKUP:
+        raise SystemExit("entry.txt does not match the line")
+    print("wrote %d of %d allowed characters to %s" % (len(PICKUP), LIMIT, OUT))
+    print(PICKUP)
 
 
 if __name__ == "__main__":
-    main()
+    write_entry()
