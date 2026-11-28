@@ -1,32 +1,27 @@
-[![make.fun · black-friday-deal-finder-01](https://make.fun/badge/black-friday-deal-finder-01.svg)](https://make.fun/bounty/black-friday-deal-finder-01?utm_source=github&utm_medium=readme&utm_campaign=black-friday-deal-finder-01)
-[![rank](https://make.fun/badge/black-friday-deal-finder-01/jennifferweslowski-design/makefun-entries-2/rank.svg)](https://make.fun/bounty/black-friday-deal-finder-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=black-friday-deal-finder-01)
-[![reward](https://make.fun/badge/black-friday-deal-finder-01/jennifferweslowski-design/makefun-entries-2/reward.svg)](https://make.fun/bounty/black-friday-deal-finder-01?utm_source=github&utm_medium=readme&utm_campaign=black-friday-deal-finder-01)
+[![make.fun · u-mang-the-printer-finally-answers-8fbf0907](https://make.fun/badge/u-mang-the-printer-finally-answers-8fbf0907.svg)](https://make.fun/bounty/u-mang-the-printer-finally-answers-8fbf0907?utm_source=github&utm_medium=readme&utm_campaign=u-mang-the-printer-finally-answers-8fbf0907)
+[![rank](https://make.fun/badge/u-mang-the-printer-finally-answers-8fbf0907/jennifferweslowski-design/makefun-entries-2/rank.svg)](https://make.fun/bounty/u-mang-the-printer-finally-answers-8fbf0907/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-mang-the-printer-finally-answers-8fbf0907)
+[![reward](https://make.fun/badge/u-mang-the-printer-finally-answers-8fbf0907/jennifferweslowski-design/makefun-entries-2/reward.svg)](https://make.fun/bounty/u-mang-the-printer-finally-answers-8fbf0907?utm_source=github&utm_medium=readme&utm_campaign=u-mang-the-printer-finally-answers-8fbf0907)
 
-# Black Friday Deal Finder
+# The Printer Finally Answers
 
-A working deal finder for the make.fun bounty "Build the best real
-Black Friday deal finder": a static site listing 12 Black Friday and
-Cyber Monday deals, each with its product, its store, a link to the
-store, its sale price, its usual price, its discount, and when its
-price was checked, with search and filters by category, store and
-discount that work.
+One line, in the office printer's own voice, as its comeback to the
+jams, the error codes and the thumps:
 
-Every price was read from a retailer release or a deals roundup that
-names the store on 27 November 2026 and re-read on 28 November 2026.
-Each deal carries an honest signal — New low, Strong price, Good
-price or Modest discount — with the evidence for it. Nothing is a
-placeholder: the site is plain static files under `app/`, it loads
-nothing over the network, and it works on a desktop and on a phone.
+> I jammed on purpose — you were about to print 200 pages of a PDF
+> you will never read.
+
+The joke is the printer's, not the user's: the jam is recast as a
+favour, done on purpose, by a machine that has counted every sheet
+it has ever fed. One sentence, 85 characters, no setup needed.
 
 ## Run
 
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+MAKEFUN_OUTPUT_DIR=out python3 main.py
 ```
 
-This copies `app/` and `screenshots/` into the output directory and
-writes `dossier.json` there. To look at the site first, serve `app/`
-with any static server, for example `python3 -m http.server` inside
-`app/`, and open it in a browser.
+This writes the line to `out/entry.txt` (86 characters with the
+trailing newline, inside the competition's 1–240 limit) and checks
+the length of the file as written, not just the line.
 
 This entry is on make.fun.
