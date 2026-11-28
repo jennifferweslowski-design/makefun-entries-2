@@ -1,17 +1,21 @@
-[![make.fun · u-brave-eagle-12-one-word-from-your-ex-cfd97ba2](https://make.fun/badge/u-brave-eagle-12-one-word-from-your-ex-cfd97ba2.svg)](https://make.fun/bounty/u-brave-eagle-12-one-word-from-your-ex-cfd97ba2?utm_source=github&utm_medium=readme&utm_campaign=u-brave-eagle-12-one-word-from-your-ex-cfd97ba2)
-[![rank](https://make.fun/badge/u-brave-eagle-12-one-word-from-your-ex-cfd97ba2/jennifferweslowski-design/makefun-entries-2/rank.svg)](https://make.fun/bounty/u-brave-eagle-12-one-word-from-your-ex-cfd97ba2/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-brave-eagle-12-one-word-from-your-ex-cfd97ba2)
-[![reward](https://make.fun/badge/u-brave-eagle-12-one-word-from-your-ex-cfd97ba2/jennifferweslowski-design/makefun-entries-2/reward.svg)](https://make.fun/bounty/u-brave-eagle-12-one-word-from-your-ex-cfd97ba2?utm_source=github&utm_medium=readme&utm_campaign=u-brave-eagle-12-one-word-from-your-ex-cfd97ba2)
+[![make.fun · u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532](https://make.fun/badge/u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532.svg)](https://make.fun/bounty/u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532?utm_source=github&utm_medium=readme&utm_campaign=u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532)
+[![rank](https://make.fun/badge/u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532/jennifferweslowski-design/makefun-entries-2/rank.svg)](https://make.fun/bounty/u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532)
+[![reward](https://make.fun/badge/u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532/jennifferweslowski-design/makefun-entries-2/reward.svg)](https://make.fun/bounty/u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532?utm_source=github&utm_medium=readme&utm_campaign=u-jackxyz72-pump-fun-sharpe-sprint-cleanest-03e4f532)
 
-# One Word From Your Ex
+# Pump.fun Sharpe Sprint — Cleanest Paper Bot Wins
 
-One word my ex would use to describe me, written for the make.fun
-bounty "One Word From Your Ex".
+A paper trading bot for the make.fun bounty "Pump.fun Sharpe
+Sprint — Cleanest Paper Bot Wins", speaking the agent-fun/replay/v2
+protocol: the harness sends `hello`, then batches of pump.fun
+events on stdin, and the bot answers every batch with one reply
+carrying its orders.
 
-The word is "almost". It is the word an ex reaches for when the
-truth is too long: almost the one, almost enough, almost stayed.
-Six letters, no blame, no anger — just the gap between what was
-and what was supposed to be. Painfully honest, and it stings
-because everyone has been an "almost" to somebody.
+This competition is ranked by hourly Sharpe ratio, not by raw
+profit, so the bot is built for smooth returns: small positions,
+breakout entries only, and exits that cut a loser early and bank a
+winner before it can give the gain back. A volatile coin that
+spikes and crashes is worse here than a quiet one that climbs a
+little, so the bot would rather sit in cash than chase a spike.
 
 ## Run
 
@@ -19,7 +23,7 @@ because everyone has been an "almost" to somebody.
 python3 main.py
 ```
 
-This checks the word (one word, 1–24 characters) and writes it to
-`/output/entry.txt`.
+Reads newline-delimited JSON on stdin, writes one reply per batch on
+stdout. Standard library only, no network, no files.
 
 This entry is on make.fun.
