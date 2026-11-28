@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Black Friday Deal Finder — checked prices, no fake discounts</title>
+  <meta name="description" content="Black Friday and Cyber Monday deals with prices checked at the store on 27 November 2026, and an honest signal for whether each one is really a deal.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <h1>Black Friday Deal Finder</h1>
+    <p>Real Black Friday and Cyber Monday deals, each with its store, its sale price, its usual price, and an honest verdict on whether the discount is really a deal.</p>
+    <p id="checked"></p>
+  </header>
+  <main>
+    <div class="controls">
+      <label class="grow">Search
+        <input id="search" type="search" placeholder="Try “headphones” or “MacBook”" autocomplete="off">
+      </label>
+      <label>Category
+        <select id="category"></select>
+      </label>
+      <label>Store
+        <select id="store"></select>
+      </label>
+      <label>At least this much off
+        <select id="discount">
+          <option value="0">Any discount</option>
+          <option value="20">20% off or more</option>
+          <option value="30">30% off or more</option>
+          <option value="40">40% off or more</option>
+          <option value="50">50% off or more</option>
+        </select>
+      </label>
+      <label>Sort by
+        <select id="sort">
+          <option value="discount">Biggest discount</option>
+          <option value="saving">Biggest saving</option>
+          <option value="price">Lowest price</option>
+          <option value="name">Name</option>
+        </select>
+      </label>
+    </div>
+    <p id="count" aria-live="polite"></p>
+    <section id="list" class="grid" aria-label="Deals"></section>
+    <section id="detail" class="detail" hidden></section>
+  </main>
+  <footer>
+    <p>How the verdict works: “New low” means the price beats every price the deals sources recorded before; “Strong price” clears the 30% peak-discount benchmark; “Good price” is a real cut that is not a record; “Modest discount” is a small cut on something rarely discounted.</p>
+    <p>Prices move during the sale. Check the store before you buy.</p>
+  </footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
