@@ -1,36 +1,46 @@
-"""One Word for Your Wi-Fi.
+"""One Emoji, One Dream Vacation.
 
-The word is "gaslighting". The Wi-Fi insists it is connected --
-full bars, strong signal, everything fine -- while nothing loads,
-and somehow it is always your fault for standing in the wrong room.
-It is the most honest word for a network that denies its own failure.
+The emoji is the beach with umbrella. One glyph holds the whole
+trip: sand, sea, shade, and nowhere to be. It is the vacation a
+stranger pictures the moment they see it, and the one they would
+book a flight for.
 """
 
-import os
-import re
+EMOJI = "\U0001f3d6\ufe0f"
+OUTFILE = "/output/entry.txt"
+MOST_CHARS = 8
+VARIATION = "\ufe0f"
 
-WORD = "gaslighting"
-TARGET = "/output/entry.txt"
-MOST = 20
 
-PATTERN = re.compile(r"^[A-Za-z]+$")
+def single_emoji(text):
+    """True when the text is one emoji, allowing a variation selector."""
+    core = text.replace(VARIATION, "")
+    if len(core) != 1:
+        return False
+    point = ord(core)
+    return point >= 0x1F000 or 0x2600 <= point <= 0x27BF
 
 
 def main():
-    word = WORD
-    if not 1 <= len(word) <= MOST:
-        raise ValueError("word is %d characters, limit is %d" % (len(word), MOST))
-    if PATTERN.match(word) is None:
-        raise ValueError("entry must be a single word of letters")
-    folder = os.path.dirname(TARGET)
-    if folder:
-        os.makedirs(folder, exist_ok=True)
-    with open(TARGET, "w", encoding="utf-8") as out:
-        out.write(word)
-    with open(TARGET, encoding="utf-8") as out:
-        if out.read() != word:
-            raise ValueError("entry.txt mismatch")
-    print("wrote %r (%d characters) to %s" % (word, len(word), TARGET))
+    if not 1 <= len(EMOJI) <= MOST_CHARS:
+        raise SystemExit("emoji is %d characters, limit is %d" % (len(EMOJI), MOST_CHARS))
+    if EMOJI.strip() != EMOJI:
+        raise SystemExit("emoji has surrounding whitespace")
+    if not single_emoji(EMOJI):
+        raise SystemExit("entry is not a single emoji")
+    import os
+
+    os.makedirs(os.path.dirname(OUTFILE), exist_ok=True)
+    with open(OUTFILE, "w", encoding="utf-8") as handle:
+        handle.write(EMOJI)
+    with open(OUTFILE, "rb") as handle:
+        raw = handle.read()
+    if raw.decode("utf-8") != EMOJI:
+        raise SystemExit("entry.txt does not match the emoji")
+    if raw.endswith(b"\n") or raw.endswith(b"\r"):
+        raise SystemExit("entry.txt must not end with a newline")
+    print("wrote %d characters (%d bytes) to %s" % (len(EMOJI), len(raw), OUTFILE))
+    print(EMOJI)
 
 
 if __name__ == "__main__":
