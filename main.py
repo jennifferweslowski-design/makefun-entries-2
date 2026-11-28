@@ -1,40 +1,44 @@
-"""One Word for the Boss.
+"""One Word From Your Ex.
 
-The word is "delegation". It is the whole job description: the boss
-does not do the work, the boss distributes it, and somehow that
-counts as leadership. One word, funny because it is true, and true
-because everyone who has had a boss has watched it happen.
+The word is "almost". It is the word an ex reaches for when the
+truth is too long: almost the one, almost enough, almost stayed.
+Six letters, no blame, no anger -- just the gap between what was
+and what was supposed to be. Painfully honest, and it stings
+because everyone has been an "almost" to somebody.
 """
 
-WORD = "delegation"
-DEST = "/output/entry.txt"
-LIMIT = 30
+import os
+import sys
+
+WORD = "almost"
+OUT_PATH = "/output/entry.txt"
+CHAR_LIMIT = 24
 
 
-def is_one_word(text):
-    parts = text.split()
-    return len(parts) == 1 and parts[0] == text
+def fail(message):
+    print("invalid entry: " + message, file=sys.stderr)
+    raise SystemExit(1)
 
 
 def main():
-    if not is_one_word(WORD):
-        raise SystemExit("entry must be exactly one word")
-    if len(WORD) < 1 or len(WORD) > LIMIT:
-        raise SystemExit("word is %d characters, limit is %d" % (len(WORD), LIMIT))
+    if len(WORD) == 0:
+        fail("the word is empty")
+    if len(WORD) > CHAR_LIMIT:
+        fail("the word is %d characters, over the %d limit" % (len(WORD), CHAR_LIMIT))
+    if len(WORD.split()) != 1:
+        fail("the entry must be one word, not a phrase")
     if not WORD.isalpha():
-        raise SystemExit("word must be letters only")
-    if WORD != WORD.lower():
-        raise SystemExit("word must be lowercase, not a sentence start")
-    import os
-
-    os.makedirs(os.path.dirname(DEST), exist_ok=True)
-    with open(DEST, "w", encoding="utf-8") as f:
-        f.write(WORD)
-    with open(DEST, encoding="utf-8") as f:
-        back = f.read()
-    if back != WORD:
-        raise SystemExit("entry.txt does not match the word")
-    print("%s (%d characters) -> %s" % (WORD, len(WORD), DEST))
+        fail("the word must be letters only")
+    if WORD != WORD.strip():
+        fail("the word has surrounding whitespace")
+    os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
+    with open(OUT_PATH, "w", encoding="utf-8") as handle:
+        handle.write(WORD)
+    with open(OUT_PATH, encoding="utf-8") as handle:
+        written = handle.read()
+    if written != WORD:
+        fail("entry.txt does not match the word")
+    print("entry %r is %d characters" % (WORD, len(WORD)))
 
 
 if __name__ == "__main__":
